@@ -1,4 +1,5 @@
 import { getDurationInMonths } from "../getDurationInMonths";
+import { PromotionDurationType } from "../../types/PromotionDurationType";
 
 describe("getDurationInMonths", () => {
   it("throws error when number of days in shorter than 30", () => {
@@ -10,16 +11,17 @@ describe("getDurationInMonths", () => {
 
   it.each`
     daysNumber | expected
-    ${42}      | ${"about 1 months"}
-    ${40}      | ${"about 1 months"}
-    ${45}      | ${"about 2 months"}
-    ${57}      | ${"about 2 months"}
-    ${76}      | ${"about 3 months"}
+    ${42}      | ${1}
+    ${40}      | ${1}
+    ${45}      | ${2}
+    ${57}      | ${2}
+    ${76}      | ${3}
   `(
     "returns text with rounded number of months for days: $daysNumber",
     ({ daysNumber, expected }) => {
       const result = getDurationInMonths(daysNumber);
-      expect(result).toBe(expected);
+      expect(result.value).toBe(expected);
+      expect(result.type).toBe(PromotionDurationType.months);
     }
   );
 
@@ -27,7 +29,7 @@ describe("getDurationInMonths", () => {
     const resultFor42Days = getDurationInMonths(42);
     const resultFor55Days = getDurationInMonths(55);
 
-    expect(resultFor42Days).toBe("about 1 months");
-    expect(resultFor55Days).toBe("about 2 months");
+    expect(resultFor42Days.value).toBe(1);
+    expect(resultFor55Days.value).toBe(2);
   });
 });

@@ -1,4 +1,9 @@
-export const getDurationInWeeks = (days: number): string => {
+import {
+  PromotionDurationOutput,
+  PromotionDurationType,
+} from "../types/PromotionDurationType";
+
+export const getDurationInWeeks = (days: number): PromotionDurationOutput => {
   if (days > 30) {
     throw new Error("Days should be shorter than 30");
   }
@@ -9,5 +14,8 @@ export const getDurationInWeeks = (days: number): string => {
 
   const approximateNumberOfWeeks = Math.round(days / 7);
 
-  return `about ${approximateNumberOfWeeks} weeks`;
+  return {
+    type: PromotionDurationType.weeks,
+    value: approximateNumberOfWeeks,
+  };
 };
