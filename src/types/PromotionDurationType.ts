@@ -1,11 +1,11 @@
 import { Time } from "./Time";
 
 export enum PromotionDurationType {
-  time,
-  hours,
-  days,
-  weeks,
-  months,
+  time = "time",
+  hours = "hours",
+  days = "days",
+  weeks = "weeks",
+  months = "months",
 }
 
 export type PromotionDurationOutput = {

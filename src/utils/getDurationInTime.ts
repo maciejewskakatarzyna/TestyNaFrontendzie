@@ -4,9 +4,10 @@ import {
 } from "../types/PromotionDurationType";
 
 export const getDurationInTime = (
-  timeDifference: number
+  startDate: Date,
+  endDate: Date
 ): PromotionDurationOutput => {
-  let timeDiff = timeDifference;
+  let timeDiff = Math.abs(endDate.getTime() - startDate.getTime());
   let hh: string | number = Math.floor(timeDiff / 1000 / 60 / 60);
   hh = `0${hh}`.slice(-2);
 

@@ -30,6 +30,5 @@ export const getPromotionDuration = (
     return { type: PromotionDurationType.hours, value: hours };
   }
 
-  const timeDiff = Math.abs(endDateTime - startDateTime);
-  return getDurationInTime(timeDiff);
+  return getDurationInTime(startDate, endDate);
 };

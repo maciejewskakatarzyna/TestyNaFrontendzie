@@ -1,5 +1,4 @@
 import { getDurationInMonths } from "../getDurationInMonths";
-import { PromotionDurationType } from "../../types/PromotionDurationType";
 
 describe("getDurationInMonths", () => {
   it("throws error when number of days in shorter than 30", () => {
@@ -21,7 +20,7 @@ describe("getDurationInMonths", () => {
     ({ daysNumber, expected }) => {
       const result = getDurationInMonths(daysNumber);
       expect(result.value).toBe(expected);
-      expect(result.type).toBe(PromotionDurationType.months);
+      expect(result.type).toBe("months");
     }
   );
 
