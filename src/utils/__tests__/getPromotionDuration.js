@@ -1,5 +1,4 @@
 import { getPromotionDuration } from "../getPromotionDuration";
-import { PromotionDurationType } from "../../types/PromotionDurationType";
 
 test("should return duration in months for durations longer than 30 days", () => {
   const result = getPromotionDuration(
@@ -17,6 +16,5 @@ it("should return duration in weeks for durations longer than 10 days and shorte
     new Date("2021-02-21")
   );
 
-  expect(result.value).toEqual(3);
-  expect(result.type).toEqual("weeks");
+  expect(result).toEqual({ value: 3, type: "weeks" });
 });
